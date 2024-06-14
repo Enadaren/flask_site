@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="by">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Кніга рацептаў </title>
+        <link rel="stylesheet", href="./css/styles.css">
+    </head>
+    <body>
+        <div class="headline">
+            <div> 
+                <a href="all.html" class="menu"> Усе рацэпты </a>
+            </div>
+            <div>
+                <a href="search.html" class="menu"> Пошук рацэпта</a>
+            </div>
+            <div>
+                <a href="add.html" class="menu"> Дадаць рацэпт</a> 
+            </div>
+            <div>
+                 <a href="index.html" class="menu"> На галоўную </a>
+            </div>
+        </div>
+        <div class="recipes">
+            {% for r in result %} 
+                <div class="recipe">
+                    <div>
+                        <a href="{{ url_for('recipe',recipe_id=r.id) }}" > {{ r.name }}</a>
+                    </div>
+                    <div> {{ r.Category }} </div>
+                    <div> {{ r.Time_long }} </div>
+                    <div>
+                        <form action="{{ url_for('edit',recipe_id=r.id) }}", method="post">
+                            <input type="submit" value="Змяніць">
+                        </form>
+                    </div>
+                    <div>
+                        <form action="{{ url_for('del',recipe_id=r.id) }}", method="post">
+                            <input type="submit" value="Выдаліць">
+                        </form> 
+                    </div>
+                </div>
+            {% endfor %}
+    </body>
+</html>
