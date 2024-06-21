@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="by">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> recipe.name</title>
+        <link rel="stylesheet", href="./css/styles.css">
+    </head>
+    <body>
+        <div class="headline">
+            <div> 
+                <a href="all.html" class="menu"> Усе рацэпты </a>
+            </div>
+            <div>
+                <a href="search.html" class="menu"> Пошук рацэпта</a>
+            </div>
+            <div>
+                <a href="add.html" class="menu"> Дадаць рацэпт</a> 
+            </div>
+            <div>
+                 <a href="index.html" class="menu"> На галоўную </a>
+            </div>
+        </div>
+        <div class="container">
+            <h1>{{recipe.name}}</h1>
+            <div class="recipe_info">
+                <div class="image">
+                    <img src={{recipe.Image}} alt={{recipe.name}}>
+                </div>
+                <div class="short">
+                    <div class="description"> {{recipe.Description}} Час прыгатавання: {{recipe.Time_long}}
+                    </div>
+                    <div class="ingridients">
+                        {{recipe.Ingidients}}
+                    </div>
+                </div>
+            </div>
+            <div class="pipeline">{{recipe.Pipeline}}</div>
+        </div>
+        <div class="action">
+            <div><form action="{{ url_for('edit',recipe_id=r.id) }}", method="post">
+                <input type="submit" value="Змяніць">
+            </form></div>
+            <div><form action="{{ url_for('del',recipe_id=r.id) }}", method="post">
+                <input type="submit" value="Выдаліць">
+            </form> </div>
+        </div>
+        {{% if posts is not None %}}
+            {{% for p in posts %}}
+                <div class="post">
+                    <div class="post_head">
+                        <div class="post_author">{{p.author}}</div>
+                        <div class="post_data">{{p.Date}}</div>
+                    </div>
+                    <div class="post_text">{{p.Text}}</div>
+                </div>
+            {{% endfor %}}
+        {{% endif%}}
+        {{% for field in form %}}
+            <div class="form_comment">
+                {{field.label()}}
+                {{field}}
+            </div>
+        {{% endfor %}}
+    </body>
+</html>

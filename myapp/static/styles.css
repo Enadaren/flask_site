@@ -1,0 +1,118 @@
+*{box-sizing: border-box;
+margin: 20;
+position: 40px, 20px;
+background-color: rgb(245,213,144);}
+.headline{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-gap: 10px;
+    position: relative;
+}
+.menu
+{
+    text-decoration: none;
+    display: grid;
+    font-size: 14;
+    color: rgb(138,85,65);
+    justify-content: center;
+}
+.menu :hover
+{
+    color: black;
+}
+.recipe
+{
+    display: grid;
+    grid-template-columns: 20%;
+    text-align: center;
+    font-size: 14;
+    color: rgb(138,85,65);
+}
+a
+{
+    text-decoration: none;
+}
+a :hover
+{
+    color: black;
+}
+.recipe_info
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    font-size: 12;
+    color: rgb(138,85,65);
+    text-align: left;
+}
+img
+{
+    display:block;
+    height: 200px;
+    width: 200px;
+    align-self: center;
+}
+.short
+{
+    display:grid;
+    grid-template-rows: 30% 70%;
+}
+.pipeline
+{
+    font-size: 12;
+    color: rgb(138,85,65);
+    text-align: left;    
+}
+h1
+{
+    text-align: center;
+    font-size: 18;
+    color: rgb(138,85,65);
+}
+.action
+{
+    display: grid;
+    grid-template-columns: 40px 40px;
+    font-size: 14;
+    color: rgb(138,85,65);
+    text-align: center;
+}
+.post
+{
+    display: grid;
+    grid-template-rows: 40px 100px;
+    width: 500px;
+    margin: 3px;
+    border-color: white;
+    color: black;
+    font-size: 10;
+    text-align: left;
+}
+.post_head
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    margin: 1px;
+    border-color: white;
+}
+.form_comment
+{
+    margin: 2px;
+    border-color: white;
+    color: black;
+    font-size: 10;
+    text-align: left;
+}
+.form_search
+{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    font-size: 12;
+    color: rgb(138,85,65);
+    text-align: left;
+}
+
+.key_word_search
+{
+    display: grid;
+    grid-template-rows: 50% 50%;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="by">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Пошук рацэпта </title>
+        <link rel="stylesheet", href="./css/styles.css">
+    </head>
+    <body>
+        <div class="headline">
+            <div> 
+                <a href="all.html" class="menu"> Усе рацэпты </a>
+            </div>
+            <div>
+                <a href="search.html" class="menu"> Пошук рацэпта</a>
+            </div>
+            <div>
+                <a href="add.html" class="menu"> Дадаць рацэпт</a> 
+            </div>
+            <div>
+                 <a href="index.html" class="menu"> На галоўную </a>
+            </div>
+        </div>
+        <h1> Пошук рацэпта </h1>
+        <div class="form_search">
+          <div class="select">
+            {{ form.Category.label() }}
+            {{ form.Category() }}
+            </div> 
+          <div class="key_word_search">
+            <div> 
+                {{ form.name.label() }}
+                {{ form.name()}}
+            </div> 
+            <div>
+                {{ form.Ingridients.label() }}
+                {{ form.Ingridients()}}
+            </div>
+        </div> 
+    </body>
+</html>
