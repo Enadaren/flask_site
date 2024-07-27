@@ -3,64 +3,78 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> recipe.name</title>
-        <link rel="stylesheet", href="./css/styles.css">
+        <title> {{recipe.name}}</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles.css') }}">
     </head>
     <body>
         <div class="headline">
             <div> 
-                <a href="all.html" class="menu"> Усе рацэпты </a>
+                <a href="{{ url_for('all') }}" class="menu"> Усе рацэпты </a>
             </div>
             <div>
-                <a href="search.html" class="menu"> Пошук рацэпта</a>
+                <a href="{{ url_for('search') }}" class="menu"> Пошук рацэпта</a>
             </div>
             <div>
-                <a href="add.html" class="menu"> Дадаць рацэпт</a> 
+                <a href="{{ url_for('add') }}" class="menu"> Дадаць рацэпт</a> 
             </div>
             <div>
-                 <a href="index.html" class="menu"> На галоўную </a>
+                 <a href="{{ url_for('index') }}" class="menu"> На галоўную </a>
             </div>
         </div>
         <div class="container">
             <h1>{{recipe.name}}</h1>
             <div class="recipe_info">
                 <div class="image">
-                    <img src={{recipe.Image}} alt={{recipe.name}}>
+                    <img src="{{ url_for('static',filename=recipe.image) }}" alt={{recipe.name}}>
                 </div>
                 <div class="short">
-                    <div class="description"> {{recipe.Description}} Час прыгатавання: {{recipe.Time_long}}
+                    <div class="description"> {{recipe.Description}} <br> Час прыгатавання: {{recipe.Time_long}}
                     </div>
                     <div class="ingridients">
-                        {{recipe.Ingidients}}
+                        {% for item in recipe.Ingridients.split('\n') %}
+                            {{item}}<br>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            <div class="pipeline">{{recipe.Pipeline}}</div>
+            <div class="pipeline"> 
+                {% for item in recipe.Pipeline.split('\n') %}
+                    {{ item }}<br>
+                {% endfor %}
+            </div>
         </div>
         <div class="action">
-            <div><form action="{{ url_for('edit',recipe_id=r.id) }}", method="post">
+            <div><form action="{{ url_for('edit',recipe_id=recipe.id) }}", method="post">
                 <input type="submit" value="Змяніць">
             </form></div>
-            <div><form action="{{ url_for('del',recipe_id=r.id) }}", method="post">
+            <div><form action="{{ url_for('delete',recipe_id=recipe.id) }}", method="post">
                 <input type="submit" value="Выдаліць">
             </form> </div>
         </div>
-        {{% if posts is not None %}}
-            {{% for p in posts %}}
+        {% if posts %}
+            {% for p in posts %}
                 <div class="post">
                     <div class="post_head">
                         <div class="post_author">{{p.author}}</div>
-                        <div class="post_data">{{p.Date}}</div>
+                        <div class="post_data">{{p.Date.strftime('%d-%m-%Y %H:%M:%S')}}</div>
                     </div>
                     <div class="post_text">{{p.Text}}</div>
                 </div>
-            {{% endfor %}}
-        {{% endif%}}
-        {{% for field in form %}}
+            {% endfor %}
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {{form.csrf_token}}
             <div class="form_comment">
-                {{field.label()}}
-                {{field}}
+                {{form.name.label()}}
+                {{form.name}}
             </div>
-        {{% endfor %}}
+            <div class="form_comment">
+                {{form.Comment.label()}}
+                {{form.Comment}}
+            </div>
+            <div class="form_comment">
+                {{form.submit}}
+            </div>
+        </form>
     </body>
 </html>

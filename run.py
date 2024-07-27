@@ -1,7 +1,8 @@
 import os
-from myapp import app
+from myapp import app, db
 from myapp import views    
 
 if __name__=="__main__":
-    print(app)
+    with app.app_context():
+        db.create_all()
     app.run()

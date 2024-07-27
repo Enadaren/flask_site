@@ -6,8 +6,9 @@ os.environ['MYAPPDIR']=app_dir
 appConfig = confuse.Configuration('MYAPPDIR')
 
 class Config:
-    SECRET_KEY="secretkey"
-    WORKER_KEY="workerkey"
- #   LANGUAGES = ['en', 'by']
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://alisa:alisa@localhost/recipes_db'
-    SQLALCHEMY_TRACK_MODIFICATIONS=False
+   SECRET_KEY="secretkey"
+   WORKER_KEY="workerkey"
+ # LANGUAGES = ['en', 'by']
+   SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://alisa:alisa@localhost/recipes_db'
+   SQLALCHEMY_TRACK_MODIFICATIONS=False
+    
